@@ -27,8 +27,19 @@ pipeline {
     }
 
     post {
+        success {
+            echo "✅ Pipeline sukses!"
+        }
+
+        failure {
+            echo "❌ Pipeline gagal!"
+            // mail to: 'someone@mail.com',
+            //      subject: "Pipeline Gagal: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            //      body: "Pipeline ${env.JOB_NAME} build #${env.BUILD_NUMBER} gagal.\nCek console output: ${env.BUILD_URL}console"
+        }
+
         always {
-            echo "Pipeline finished"
+            echo "Pipeline selesai"
         }
     }
 }
