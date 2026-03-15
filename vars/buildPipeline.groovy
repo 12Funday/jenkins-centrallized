@@ -4,7 +4,7 @@ def call(String repoUrl, String imageName) {
         stages {
             stage('Checkout') {
                 steps {
-                    git repoUrl
+                    git branch: 'main', url: repoUrl
                 }
             }
             stage('Build Docker') {
