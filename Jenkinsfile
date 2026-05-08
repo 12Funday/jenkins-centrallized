@@ -6,13 +6,18 @@ pipeline {
     parameters {
         string(name: 'REPO_URL', defaultValue: 'https://github.com/12funday/test-py-pipeline.git', description: 'URL repo project')
         string(name: 'IMAGE_NAME', defaultValue: '12funday/test-py-pipeline', description: 'Docker image name')
+        string(name: 'IMAGE_TAG', defaultValue: '', description: 'Unique Tag')
     }
 
     stages {
         stage('Build') {
             steps {
                 script {
-                    buildPipeline(params.REPO_URL, params.IMAGE_NAME)
+                    // buildPipeline(params.REPO_URL, params.IMAGE_NAME)
+                    buildPipeline(
+                        params.REPO_URL,
+                        "${params.IMAGE_NAME}:${params.IMAGE_TAG}"
+                    )
                 }
             }
         }
